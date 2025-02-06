@@ -1,30 +1,3 @@
-# Video Upload Project
-
-This project is a video upload platform where users can upload a video file or record one using their camera. We are currently using Shadcn components for the proof of concept (POC), but these components can also be implemented on our own in the future.
-
-## Prerequisites
-
-Before running the project, make sure you have the following installed:
-
-- [Node.js](https://nodejs.org/) (v16 or later recommended)
-- [pnpm](https://pnpm.io/) (used for managing dependencies)
-
-## Setup
-
-### 1. Clone the Repository
-
-Clone the repository to your local machine:
-
-```bash
-git clone <repository-url>
-cd <project-directory>
-```
-
-Here's the complete README.md content in Markdown format:
-
-markdown
-Copy
-Edit
 
 # Video Upload Project
 
