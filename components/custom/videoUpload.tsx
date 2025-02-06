@@ -130,39 +130,51 @@ export function VideoUploadForm(): JSX.Element {
       toast({ description: "Failed to upload video", variant: "destructive" });
     }
   };
+    const handleSubmit = (e: React.FormEvent) => {
+      e.preventDefault(); // Prevent default form submission
 
-  return (
-    <form ref={formRef} className="flex flex-col space-y-4">
-      {/* File upload zone for selecting a video file */}
-      <Suspense fallback={<div>Loading...</div>}>
-        <FileUploadZone
-          onChange={handleFileChange}
-          file={file}
-          id="video-upload"
-        />
-      </Suspense>
+      if (formRef.current) {
+        const formData = new FormData(formRef.current);
+        uploadVideo(formData);
+      }
+    };
 
-      {/* Submit button */}
-      <SubmitButton />
-
-      {/* Lazy-loaded video recorder for capturing videos */}
-      <Suspense fallback={<div>Loading Video Recorder...</div>}>
-        <VideoRecorder onRecordingComplete={handleRecordingComplete} />
-      </Suspense>
-
-      {/* Upload progress indicator */}
-      {isUploading && (
-        <Suspense fallback={<div>Loading progress...</div>}>
-          <UploadProgress progress={uploadProgress} />
+    return (
+      <form
+        ref={formRef}
+        className="flex flex-col space-y-4"
+        onSubmit={handleSubmit}
+      >
+        {/* File upload zone for selecting a video file */}
+        <Suspense fallback={<div>Loading...</div>}>
+          <FileUploadZone
+            onChange={handleFileChange}
+            file={file}
+            id="video-upload"
+          />
         </Suspense>
-      )}
 
-      {/* Error display in case of failed uploads */}
-      {error && (
-        <Suspense fallback={<div>Loading errors...</div>}>
-          <ErrorDisplay error={error} />
+        {/* Submit button */}
+        <SubmitButton />
+
+        {/* Lazy-loaded video recorder for capturing videos */}
+        <Suspense fallback={<div>Loading Video Recorder...</div>}>
+          <VideoRecorder onRecordingComplete={handleRecordingComplete} />
         </Suspense>
-      )}
-    </form>
-  );
+
+        {/* Upload progress indicator */}
+        {isUploading && (
+          <Suspense fallback={<div>Loading progress...</div>}>
+            <UploadProgress progress={uploadProgress} />
+          </Suspense>
+        )}
+
+        {/* Error display in case of failed uploads */}
+        {error && (
+          <Suspense fallback={<div>Loading errors...</div>}>
+            <ErrorDisplay error={error} />
+          </Suspense>
+        )}
+      </form>
+    );
 }
