@@ -1,3 +1,5 @@
+import { JSX } from "react";
+
 import { Progress } from "@/components/ui/progress";
 
 interface UploadProgressProps {
@@ -12,7 +14,9 @@ interface UploadProgressProps {
  * @param {number} props.progress - The current progress of the upload as a percentage (0-100).
  * @returns {JSX.Element | null} The progress bar component or null if the progress is 0.
  */
-export function UploadProgress({ progress }: UploadProgressProps) {
+export function UploadProgress({
+  progress,
+}: UploadProgressProps): JSX.Element | null {
   // Do not render the progress bar if the upload has not started
   if (progress === 0) return null;
 

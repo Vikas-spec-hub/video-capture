@@ -1,10 +1,12 @@
 "use client";
 
-import { ChangeEvent, lazy, Suspense, useRef, useState } from "react";
+import { ChangeEvent, JSX, lazy, Suspense, useRef, useState } from "react";
+
+import { useToast } from "@/hooks/use-toast";
+
 import { FileUploadZone } from "./inputBox";
 import { UploadProgress } from "./uploadProgress";
 import { ErrorDisplay } from "./errorDisplay";
-import { useToast } from "@/hooks/use-toast";
 import { SubmitButton } from "./submitButton";
 
 // Lazily load the VideoRecorder component for better performance
@@ -15,12 +17,15 @@ const VideoRecorder = lazy(() => import("@/components/custom/videoRecorder"));
  *
  * @returns {JSX.Element} The video upload form component.
  */
-export function VideoUploadForm() {
+export function VideoUploadForm(): JSX.Element {
+  //React states
   const [error, setError] = useState<string>("");
   const [uploadProgress, setUploadProgress] = useState(0);
   const [file, setFile] = useState<File | undefined>();
   const [isUploading, setIsUploading] = useState(false);
+  // Refs
   const formRef = useRef<HTMLFormElement>(null);
+  // Hooks
   const { toast } = useToast();
 
   // Resets the form and its state

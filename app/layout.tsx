@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { lazy, Suspense } from "react";
+import { JSX, lazy, Suspense } from "react";
 
 const Toaster = lazy(() => import("@/components/ui/toaster"));
 
@@ -42,7 +42,7 @@ export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
-}>) {
+}>): JSX.Element {
   return (
     <html lang="en">
       <body

@@ -2,6 +2,12 @@ import { CognitoIdentityClient } from "@aws-sdk/client-cognito-identity";
 import { fromCognitoIdentityPool } from "@aws-sdk/credential-provider-cognito-identity";
 import { S3Client } from "@aws-sdk/client-s3";
 
+if (
+  !process.env.NEXT_PUBLIC_AWS_REGION ||
+  !process.env.NEXT_PUBLIC_IDENTITY_POOL_ID
+) {
+  throw new Error("env variables not found");
+}
 const REGION = process.env.NEXT_PUBLIC_AWS_REGION!;
 const IDENTITY_POOL_ID = process.env.NEXT_PUBLIC_IDENTITY_POOL_ID!;
 

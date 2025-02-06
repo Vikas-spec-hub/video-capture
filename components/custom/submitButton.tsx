@@ -1,7 +1,9 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
+import { JSX } from "react";
 import { useFormStatus } from "react-dom";
+
+import { Button } from "@/components/ui/button";
 
 /**
  * SubmitButton component that handles form submission.
@@ -9,7 +11,7 @@ import { useFormStatus } from "react-dom";
  *
  * @returns {JSX.Element} The submit button component.
  */
-export function SubmitButton() {
+export function SubmitButton(): JSX.Element {
   // Get form submission status to disable the button when submitting
   const { pending } = useFormStatus();
 

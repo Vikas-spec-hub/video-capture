@@ -1,7 +1,7 @@
 "use client";
 
 import { Camera, Video } from "lucide-react";
-import { ChangeEvent } from "react";
+import { ChangeEvent, JSX } from "react";
 
 interface FileUploadZoneProps {
   /** Unique ID for the file input field */
@@ -22,7 +22,11 @@ interface FileUploadZoneProps {
  * @param {File} [props.file] - Optional file to display if already selected.
  * @returns {JSX.Element} The file upload zone component.
  */
-export function FileUploadZone({ id, onChange, file }: FileUploadZoneProps) {
+export function FileUploadZone({
+  id,
+  onChange,
+  file,
+}: FileUploadZoneProps): JSX.Element {
   return (
     <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center">
       {/* Hidden file input for video uploads */}

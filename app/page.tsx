@@ -1,5 +1,6 @@
 import type { NextPage } from "next";
 import { VideoUploadForm } from "@/components/custom/videoUpload";
+import { JSX } from "react";
 
 /**
  * Home page component that provides a user interface
@@ -7,7 +8,7 @@ import { VideoUploadForm } from "@/components/custom/videoUpload";
  *
  * @returns {JSX.Element} The Home page layout.
  */
-const Home: NextPage = () => {
+const Home: NextPage = (): JSX.Element => {
   return (
     <main>
       <div className="max-w-md mx-auto p-6 space-y-6">

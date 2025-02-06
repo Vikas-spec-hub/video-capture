@@ -1,3 +1,5 @@
+import { JSX } from "react";
+
 import { Alert, AlertDescription } from "@/components/ui/alert";
 
 interface ErrorDisplayProps {
@@ -12,7 +14,7 @@ interface ErrorDisplayProps {
  * @param {string} props.error - The error message to display.
  * @returns {JSX.Element | null} The error alert component or null if no error exists.
  */
-export function ErrorDisplay({ error }: ErrorDisplayProps) {
+export function ErrorDisplay({ error }: ErrorDisplayProps): JSX.Element | null {
   if (!error) return null;
 
   return (

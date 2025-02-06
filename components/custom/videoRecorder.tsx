@@ -1,10 +1,12 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { JSX, useRef, useState } from "react";
 import { Camera } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { ErrorDisplay } from "./errorDisplay";
 import { useFormStatus } from "react-dom";
+
+import { Button } from "@/components/ui/button";
+
+import { ErrorDisplay } from "./errorDisplay";
 
 interface VideoRecorderProps {
   /** Callback function to handle the recorded video file */
@@ -19,19 +21,21 @@ interface VideoRecorderProps {
  * @param {function} props.onRecordingComplete - Callback to handle the recorded video file.
  * @returns {JSX.Element} The VideoRecorder component.
  */
-export function VideoRecorder({ onRecordingComplete }: VideoRecorderProps) {
+export function VideoRecorder({
+  onRecordingComplete,
+}: VideoRecorderProps): JSX.Element {
   // State to manage recording status
   const [isRecording, setIsRecording] = useState(false);
+  // State to store the recorded video file
+  const [recordedFile, setRecordedFile] = useState<File | null>(null);
+  // State to handle error messages
+  const [error, setError] = useState<string>("");
   // Ref for the video element to display live video feed
   const videoRef = useRef<HTMLVideoElement>(null);
   // Ref for the MediaRecorder instance
   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
   // Ref to store video chunks while recording
   const chunksRef = useRef<BlobPart[]>([]);
-  // State to handle error messages
-  const [error, setError] = useState<string>("");
-  // State to store the recorded video file
-  const [recordedFile, setRecordedFile] = useState<File | null>(null);
   // Form status to track submission state
   const { pending } = useFormStatus();
 
