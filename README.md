@@ -31,7 +31,14 @@ pnpm install
 
 ### 3. Configure the Environment
 
-If needed, create a .env file in the root of the project and add necessary environment variables (e.g., API keys, database credentials, etc.). For now, this project doesn't require any special configuration, but that might change as features are added.
+To ensure the project functions correctly, create a .env file in the root directory and add the necessary environment variables. These variables are used for AWS S3 integration, including specifying the region, identity pool ID, and S3 bucket name.
+
+NEXT_PUBLIC_AWS_REGION=""          # AWS region where your S3 bucket is hosted (e.g., "us-east-1")
+NEXT_PUBLIC_IDENTITY_POOL_ID=""    # Amazon Cognito Identity Pool ID for authentication (e.g., "us-east-1:xxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
+NEXT_PUBLIC_S3_BUCKET_NAME=""      # Name of the AWS S3 bucket where videos will be uploaded
+
+Make sure to replace the placeholders with actual values from your AWS configuration. If you're deploying the project, ensure these variables are correctly set in your hosting environment
+
 
 ### 4. Run the Development Server
 
